@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 auth.json
 node_modules
+.DS_Store
