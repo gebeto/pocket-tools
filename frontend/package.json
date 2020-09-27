@@ -1,11 +1,10 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build --public-url './static/' -d '../static' index.html",
-    "watch": "parcel watch --public-url './static/' -d '../static' index.html"
+    "build": "parcel build --public-url './static/' -d '../backend/static' index.html",
+    "watch": "parcel watch --public-url './static/' -d '../backend/static' index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
@@ -14,12 +13,14 @@
   "dependencies": {
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
     "@types/styletron-engine-atomic": "^1.1.0",
     "@types/styletron-react": "^5.0.2",
     "@types/styletron-standard": "^2.0.1",
     "baseui": "^9.101.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7"
   }

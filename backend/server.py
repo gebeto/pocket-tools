@@ -1,4 +1,6 @@
 from aiohttp import web, ClientSession
+import aiohttp_jinja2
+import jinja2
 import json
 
 from req import post_request, consumer_key
@@ -39,15 +41,20 @@ async def handle_auth(request):
 	return web.HTTPFound(location=redirect_url)
 
 
+@aiohttp_jinja2.template("redirect.jinja2")
 async def handle_redirect(request):
 	code = request.match_info.get("code")
 	auth = await auth_authorize(code)
 	if auth is None:
 		return web.HTTPFound(location="/auth")
-	set_auth_data(auth)
-	return web.json_response(auth)
+	auth_string = json.dumps(auth)
+	return {
+		"auth_string": auth_string
+	}
+
 
 app = web.Application()
+aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('./templates'))
 app.add_routes([
 	web.get('/', handle_index),
 	web.static('/static', './static'),
